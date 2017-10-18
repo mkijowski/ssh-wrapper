@@ -1,2 +1,17 @@
 #!/bin/bash
+##reference all arguments with  $@
+##refernce number of arguments with $#
 
+#number of arguments sent to the SSH command 
+#(number of arguments before we need to insert singularity commands)
+NUM_ARG_SSH=2
+
+#which singularity image are we loading
+SINGULARITY_IMAGE=/data/singularity/starccm.img
+
+#TODO: this is currently pseudo-code, rewrite correctly
+NEW_ARGUMENTS=$(sed $@ reformat to insert "singularity exec $SINGULARITY_IMAGE" after the first $NUM_ARG_SSH )
+
+ssh $NEW_ARGUMENTS
+
+exit
