@@ -10,7 +10,7 @@ NUM_ARG_SSH=2
 SINGULARITY_IMAGE=/data/singularity/starccm.img
 
 #TODO: this is currently pseudo-code, rewrite correctly
-NEW_ARGUMENTS=$(sed $@ reformat to insert "singularity exec $SINGULARITY_IMAGE" after the first $NUM_ARG_SSH )
+NEW_ARGUMENTS=$(sed $@ 's/ -n / -n singularity exec \/data\/singularity\/starccm\.img /g' )
 
 ssh $NEW_ARGUMENTS
 
