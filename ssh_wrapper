@@ -3,14 +3,14 @@
 ##refernce number of arguments with $#
 
 #number of arguments sent to the SSH command 
-#(number of arguments before we need to insert singularity commands)
-NUM_ARG_SSH=2
+#(number of arguments before we need to insert singularity commands) not used...
+#NUM_ARG_SSH=2
 
-#which singularity image are we loading
-SINGULARITY_IMAGE=/data/singularity/starccm.img
+#which singularity image are we loading... also not used (im bad at this)
+#SINGULARITY_IMAGE=/data/singularity/starccm.img
 
 #TODO: this is currently pseudo-code, rewrite correctly
-NEW_ARGUMENTS=$(sed $@ 's/ -n / -n singularity exec \/data\/singularity\/starccm\.img /g' )
+NEW_ARGUMENTS=$(echo $@ | sed 's/ -n / -n singularity exec \/data\/singularity\/starccm\.img /g' )
 
 ssh $NEW_ARGUMENTS
 
